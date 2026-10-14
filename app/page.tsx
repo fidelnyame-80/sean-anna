@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import Quiz from "./components/Quiz";
 import RSVP from "./components/RSVP";
 import Reveal from "./components/Reveal";
+import Countdown from "./components/Countdown";
 import { photos, wedding } from "./site-content";
 
 type PhotoSlotProps = {
@@ -48,16 +49,19 @@ export default function Home() {
           <span className="hero__scroll" aria-hidden="true">SCROLL TO EXPLORE <b>↓</b></span>
         </section>
 
-        <section className="info-band big-day" id="our-day" aria-labelledby="day-heading">
-          <div className="portrait-frame portrait-frame--day">
-            <PhotoSlot src={photos.ourDay} label="Sean and Anna portrait" className="portrait portrait--day" />
-          </div>
-          <div className="info-band__copy big-day__copy">
-            <p className="section-kicker">THE CELEBRATION</p>
-            <h2 id="day-heading">OUR BIG DAY</h2>
-            <p className="section-intro">Please join us for a day filled with love.</p>
-            <p className="date-line">{wedding.dateDisplay}</p>
-            <p className="detail-note">Ceremony time to follow</p>
+        <section className="wedding-invitation" id="our-day" aria-labelledby="day-heading">
+          <div className="wedding-invitation__card">
+            <p className="wedding-invitation__eyebrow">A DAY FOR LOVE. A LIFETIME TOGETHER.</p>
+            <h2 className="wedding-invitation__heading" id="day-heading">
+              <span>The</span> WEDDING <span>of</span>
+            </h2>
+            <p className="wedding-invitation__names">Sean <span>&</span> Anna</p>
+            <div className="wedding-invitation__date">
+              <time dateTime={wedding.startsAt}>{wedding.dateDisplay}</time>
+              <span className="wedding-invitation__time">{wedding.timeDisplay}</span>
+            </div>
+            <Countdown target={wedding.startsAt} />
+            <p className="wedding-invitation__closing">We saved you a place in our forever.</p>
           </div>
         </section>
 

@@ -169,13 +169,6 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: .01em;
   text-wrap: balance;
 }
-.detail-note {
-  margin: 3.6cqw 0 0;
-  color: var(--muted);
-  font: 500 clamp(8px, 2.15cqw, 13px)/1.4 var(--sans);
-  letter-spacing: .12em;
-  text-transform: uppercase;
-}
 .portrait-frame {
   position: relative;
   width: 100%;
@@ -193,18 +186,98 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 .portrait { position: relative; z-index: 1; height: 100%; border-radius: inherit; }
-.portrait--day { background-image: linear-gradient(145deg, #d9aa7f, #9b5840 65%, #63403b); }
 .portrait--venue { background-image: linear-gradient(145deg, #c18e65, #7d4a3c 72%, #452a2a); }
 .portrait--rsvp { background-image: linear-gradient(155deg, #c19277, #9e594a 58%, #663c3f); }
 
-.big-day {
-  min-height: 75cqw;
-  grid-template-columns: 40% minmax(0, 1fr);
-  gap: 6%;
-  padding: 8cqw 6cqw;
-  background: var(--paper);
+.wedding-invitation {
+  padding: 9cqw 5cqw;
+  background: #f4ecdf;
 }
-.big-day__copy { padding-bottom: 1cqw; }
+.wedding-invitation__card {
+  position: relative;
+  isolation: isolate;
+  padding: 8cqw 4cqw 6cqw;
+  border: 1px solid #bfa58b;
+  background: linear-gradient(125deg, rgba(121, 98, 76, .08), transparent 38%, rgba(255, 255, 255, .32) 63%, transparent), #faf4e9;
+  box-shadow: 0 8px 24px rgba(71, 48, 31, .06);
+  text-align: center;
+}
+.wedding-invitation__card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1.4cqw;
+  border: 1px solid rgba(191, 165, 139, .25);
+  pointer-events: none;
+}
+.wedding-invitation__eyebrow {
+  margin: 0 0 5cqw;
+  color: var(--muted);
+  font: 500 clamp(7px, 1.7cqw, 11px)/1.6 var(--sans);
+  letter-spacing: .2em;
+}
+.wedding-invitation__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2cqw;
+  margin: 0;
+  font: 600 clamp(29px, 10.5cqw, 76px)/1.1 var(--display);
+  letter-spacing: -.05em;
+}
+.wedding-invitation__heading span {
+  font: 500 clamp(9px, 2.3cqw, 16px)/1 var(--serif);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.wedding-invitation__names {
+  margin: 2cqw 0 5cqw;
+  color: var(--rust);
+  font: 400 clamp(40px, 12cqw, 86px)/1.25 var(--script);
+}
+.wedding-invitation__names span { font-size: .7em; }
+.wedding-invitation__date {
+  display: grid;
+  gap: 1.8cqw;
+  color: var(--ink);
+  font: 600 clamp(15px, 3.8cqw, 27px)/1.35 var(--display);
+}
+.wedding-invitation__time {
+  color: var(--muted);
+  font: 500 clamp(9px, 2cqw, 13px)/1.5 var(--sans);
+  letter-spacing: .18em;
+}
+.countdown { margin-top: 6cqw; padding-top: 5cqw; border-top: 1px solid var(--line); }
+.countdown__caption {
+  margin: 0 0 3.5cqw;
+  color: var(--muted);
+  font: 500 clamp(8px, 1.9cqw, 12px)/1.5 var(--sans);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.countdown__clock { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; }
+.countdown__unit { display: flex; flex-direction: column-reverse; gap: 2cqw; min-width: 0; }
+.countdown__unit + .countdown__unit { border-left: 1px solid var(--line); }
+.countdown__number {
+  margin: 0;
+  color: var(--ink);
+  font: 600 clamp(29px, 9cqw, 65px)/1.05 var(--display);
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -.04em;
+}
+.countdown__label {
+  color: var(--muted);
+  font: 500 clamp(7px, 1.65cqw, 11px)/1.4 var(--sans);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.wedding-invitation__closing {
+  margin: 5cqw 0 0;
+  padding-top: 4cqw;
+  border-top: 1px solid var(--line);
+  color: var(--rust);
+  font: 400 clamp(19px, 5.5cqw, 38px)/1.4 var(--script);
+}
 
 .venue {
   min-height: 69cqw;
