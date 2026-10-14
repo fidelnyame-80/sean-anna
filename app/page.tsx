@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Quiz from "./components/Quiz";
 import RSVP from "./components/RSVP";
 import Reveal from "./components/Reveal";
@@ -28,7 +29,19 @@ export default function Home() {
           <PhotoSlot src={photos.hero} label="Sean and Anna together" className="hero__photo" />
           <div className="hero__content">
             <p className="hero__eyebrow">A WEDDING CELEBRATION</p>
-            <h1 id="hero-heading">Sean <span>&</span> Anna</h1>
+            <h1 id="hero-heading" aria-label="Sean & Anna">
+              <span className="hero__typewriter" aria-hidden="true">
+                {Array.from("Sean & Anna").map((character, index) => (
+                  <span
+                    key={index}
+                    className={`hero__letter${character === "&" ? " hero__letter--ampersand" : ""}`}
+                    style={{ "--type-delay": `${800 + index * 160}ms` } as CSSProperties}
+                  >
+                    {character}
+                  </span>
+                ))}
+              </span>
+            </h1>
             <span className="hero__rule" aria-hidden="true" />
             <p className="hero__invitation">We cannot wait to celebrate with you.</p>
           </div>

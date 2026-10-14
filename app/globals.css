@@ -96,7 +96,27 @@ a { color: inherit; text-decoration: none; }
   white-space: nowrap;
   text-shadow: 0 3px 20px rgba(30, 19, 18, .2);
 }
-.hero h1 span { font-size: .75em; font-style: italic; }
+.hero__typewriter { white-space: pre; }
+.hero__letter {
+  position: relative;
+  visibility: hidden;
+  animation: typewriter-letter 1ms var(--type-delay) forwards;
+}
+.hero__letter--ampersand { font-size: .75em; font-style: italic; }
+.hero__letter::after {
+  content: "";
+  position: absolute;
+  top: .12em;
+  right: -.04em;
+  width: 2px;
+  height: .8em;
+  background: currentColor;
+  opacity: 0;
+  animation: typewriter-caret 160ms var(--type-delay);
+}
+.hero__letter:last-child::after {
+  animation: typewriter-blink 700ms steps(1, end) var(--type-delay) 3;
+}
 .hero__rule {
   display: block;
   width: 44px;
@@ -416,6 +436,9 @@ a { color: inherit; text-decoration: none; }
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes question-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes dialog-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes typewriter-letter { to { visibility: visible; } }
+@keyframes typewriter-caret { 0%, 99% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes typewriter-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 @media (max-width: 360px) {
   .info-band h2 { font-size: 7cqw; }
@@ -426,4 +449,6 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal, .reveal--pending, .reveal--visible { visibility: visible; opacity: 1; transform: none; }
+  .hero__letter { animation: none; visibility: visible; }
+  .hero__letter::after { display: none; }
 }
